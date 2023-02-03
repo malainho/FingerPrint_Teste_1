@@ -18,11 +18,11 @@ fun Fragment.promptBiometricChecker(
     val executor = ContextCompat.getMainExecutor(requireContext())
     val prompt = BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
         override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-            Log.d("Resultado", "Authenticado com sucesso, acesso permitido!")
+            Log.d("Resultado", "Autenticado com sucesso, acesso permitido!")
             onAuthenticationSuccess(result)
         }
         override fun onAuthenticationError(errorCode: Int, errorMessage: CharSequence) {
-            Log.d("Resultado", "Acesso negado! Alguem ta tentando usar teu celular!")
+            Log.d("Resultado", "Acesso negado! Alguém está a tentar usar o teu telefone!")
             onAuthenticationError(errorCode, errorMessage.toString())
         }
     })

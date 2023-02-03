@@ -36,21 +36,21 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         promptBiometricChecker(
-            "Desbloqueia Por Favor",
-            "Use Seu FingerPrint",
+            "Por Favor, Desbloqueie",
+            "Use o Seu FingerPrint",
             "Cancelar",
             confirmationRequired = true,
             null,
             { result ->
                 when (result.authenticationType) {
                     AUTHENTICATION_RESULT_TYPE_BIOMETRIC -> {
-                        toast("sucesso fingerprint or face!")
+                        toast("Sucesso fingerprint ou face!")
                     }
                     AUTHENTICATION_RESULT_TYPE_UNKNOWN -> {
                         toast("sucesso por meio legado ou desconhecido")
                     }
                     AUTHENTICATION_RESULT_TYPE_DEVICE_CREDENTIAL -> {
-                        toast("sucesso pin, pattern or password")
+                        toast("sucesso, pin, padrão ou password")
                     }
                 }
             },
