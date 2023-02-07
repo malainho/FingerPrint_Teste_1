@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.biometric.BiometricPrompt
 import androidx.biometric.BiometricPrompt.*
 import com.malainho.t1.R
 import com.malainho.t1.extensions.promptBiometricChecker
@@ -17,12 +18,12 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    // private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        // viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -43,13 +44,13 @@ class MainFragment : Fragment() {
             null,
             { result ->
                 when (result.authenticationType) {
-                    AUTHENTICATION_RESULT_TYPE_BIOMETRIC -> {
+                    BiometricPrompt.AUTHENTICATION_RESULT_TYPE_BIOMETRIC -> {
                         toast("Sucesso fingerprint ou face!")
                     }
-                    AUTHENTICATION_RESULT_TYPE_UNKNOWN -> {
+                    BiometricPrompt.AUTHENTICATION_RESULT_TYPE_UNKNOWN -> {
                         toast("sucesso por meio legado ou desconhecido")
                     }
-                    AUTHENTICATION_RESULT_TYPE_DEVICE_CREDENTIAL -> {
+                    BiometricPrompt.AUTHENTICATION_RESULT_TYPE_DEVICE_CREDENTIAL -> {
                         toast("sucesso, pin, padrão ou password")
                     }
                 }
